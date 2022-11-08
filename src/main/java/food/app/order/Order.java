@@ -28,6 +28,7 @@ public class Order {
 	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		String r = sc.nextLine();
+		sc.close();
 		String[] splitA = r.split(" ", 2);
 		String[] splitItems;
 		if(splitA.length > 1)
@@ -46,9 +47,13 @@ public class Order {
 			System.out.println("Restaurant closed");
 			throw new Exception("Restaurant closed");
 		}
-		//Menu BreakfastMenu = new Menu(bMenu);
 		List<Category> categories = Arrays.asList(Category.MAIN, Category.SIDE, Category.DRINK);
 		if(splitA[0].equalsIgnoreCase("dinner")) categories.add(Category.DESSERT);
+		createAndValidateOrder(splitA, splitItems, menu, categories);
+	}
+
+	private static void createAndValidateOrder(String[] splitA, String[] splitItems, Menu menu,
+			List<Category> categories) {
 		OrderPrinter op = new PrintingByCategory(categories);
 		MealFactory mF = new MealFactory(op, menu);
 		Meal meal = mF.getMealObject(splitA[0]);
