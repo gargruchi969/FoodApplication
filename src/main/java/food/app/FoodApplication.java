@@ -1,4 +1,4 @@
-package food.app.order;
+package food.app;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,10 +18,10 @@ import food.app.menu.Menu;
 import food.app.printer.OrderPrinter;
 import food.app.printer.PrintingByCategory;
 
-public class Order {
+public class FoodApplication {
 	Meal meal;
 	
-	public Order(Meal meal) {
+	public FoodApplication(Meal meal) {
 		this.meal = meal;
 	}
 	
